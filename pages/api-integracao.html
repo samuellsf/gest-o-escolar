@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integração com APIs</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fundo-pagina">
+    <header>
+
+        <h1>Integração com APIs</h1>
+        <nav>
+            <ul>
+                <li><a href="alunos.html">Alunos</a></li>
+                <li><a href="professores.html">Professores</a></li>
+                <li><a href="secretaria.html">Secretaria</a></li>
+                <li><a href="administrativo.html">Painel Administrativo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Buscar Alunos via API</h2>
+            <h2><button type id="buscarAlunos">Buscar Alunos</button></h2>
+            <ul id="listaAlunos"></ul>
+        </section>
+
+        <section>
+            <h2>Enviar Notificação via E-mail</h2>
+            <form id="formEmail">
+                <label for="email">Destinatário:</label>
+                <input type="email" id="email" required>
+
+                <label for="assunto">Assunto:</label>
+                <input type="text" id="assunto" required>
+
+                <label for="mensagem">Mensagem:</label>
+               <h2><textarea id="mensagem" required></textarea></h2>
+
+                <h2><button type="submit">Enviar E-mail</button></h2>
+            </form>
+        </section>
+    </main>
+
+    
+    <footer>
+        <p>&copy; 2025 Gestão Escolar</p>
+    </footer>
+<button id="voltar">Voltar</button>
+    <script src="../js/api-integracao.js"></script>
+</body>
+</html>

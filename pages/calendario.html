@@ -1,0 +1,19 @@
+<h2>Eventos Escolares</h2>
+<link rel="stylesheet" href="../css/style.css">
+<body class="fundo-pagina"></body>
+<p>Gerencie os eventos escolares, adicione novos eventos e visualize a lista de eventos agendados.</p>
+<ul id="listaEventos"></ul>
+
+<form id="eventoForm">
+    <label for="titulo">Título do Evento:</label>
+    <input type="text" id="titulo" required>
+
+    <label for="data">Data:</label>
+    <input type="date" id="data" required>
+
+    <h2><button type="submit">Adicionar Evento</button></h2>
+    <h2><button type="button" id="listarEventos">Listar Eventos</button></h2>
+    <h2><button type="button" id="buscarEvento">Buscar Evento</button></h2>
+</form>
+<button id="voltar">Voltar</button>
+<script src="../js/calendario.js"></script>

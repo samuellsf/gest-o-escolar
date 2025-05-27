@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Boletins</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fundo-pagina">
+
+    <header>
+        <h1>Gerenciamento de Boletins</h1>
+        <nav>
+            <ul>
+                <li><a href="alunos.html">Alunos</a></li>
+                <li><a href="boletins.html">Boletins</a></li>
+                <li><a href="professores.html">Professores</a></li>
+                <li><a href="secretaria.html">Secretaria</a></li>
+                <li><a href="administrativo.html">Painel Administrativo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Registrar Notas</h2>
+            <form id="formBoletim">
+                <label for="aluno">Nome do Aluno:</label>
+                <input type="text" id="aluno" required>
+
+                <label for="disciplina">Disciplina:</label>
+                <select id="disciplina">
+                    <option value="Matemática">Matemática</option>
+                    <option value="Português">Português</option>
+                    <option value="História">História</option>
+                    <option value="Ciências">Ciências</option>
+                    <option value="Geografia">Geografia</option>
+                    <option value="Educação Física">Educação Física</option>
+                    <option value="Artes">Artes</option>
+                    <option value="Inglês">Inglês</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Física">Física</option>
+                    <option value="Química">Química</option>
+                    <option value="Biologia">Biologia</option>
+                    <option value="Filosofia">Filosofia</option>
+                    <option value="Sociologia">Sociologia</option>
+                    <option value="Educação Religiosa">Educação Religiosa</option>      
+                    <option value="Língua Estrangeira">Língua Estrangeira</option>
+
+                </select>
+
+                <label for="nota">Nota:</label>
+                <input type="number" id="nota" min="0" max="10" required>
+
+                <h2><button type="submit">Registrar Nota</button></h2>
+                <h2><button type="button" id="listarBoletins">Listar Boletins</button></h2>
+                <h2><button type="button" id="buscarBoletim">Buscar Boletim</button></h2>
+                <h2><button type="button" id="removerBoletim">Remover Boletim</button></h2>
+                
+            </form>
+        </section>
+
+        <section>
+            <h2>Boletins Cadastrados</h2>
+            <ul id="listaBoletins"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Gestão Escolar</p>
+    </footer>
+<button id="voltar">Voltar</button>
+    <script src="../js/boletins.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Escolar</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fundo-pagina">
+    <header>
+        <h1>Sistema de Gestão Escolar</h1>
+        <button id="menu-toggle">&#9776;</button> <!-- Ícone do menu hamburguer -->
+        <nav id="menu">
+            <ul>
+                <li><a href="alunos.html">Alunos Acadêmico</a></li>
+                <li><a href="professores.html">Professores Acadêmico</a></li>
+                <li><a href="formulario.html">Formulário de Alunos</a></li>
+                <li><a href="secretaria.html">Secretaria Escolar</a></li>
+                <li><a href="administrativo.html">Painel Administrativo</a></li>
+                <li><a href="calendario.html">Agenda e Calendário</a></li>
+                <li><a href="boletins.html">Controle Acadêmico</a></li>
+                <li><a href="login.html">Área de Login</a></li>
+                <li><a href="api-integracao.html">Integração com APIs</a></li>
+                <li><a href="matricula.html">Sistema de Matrícula</a></li>
+                <li><a href="chatbot.html">Chatbot Educacional</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Bem-vindo à página Gestão Escolar</h2>
+            <p>Esta página faz parte do Sistema de Gestão Escolar.</p>
+        </section>
+    </main>
+
+         <!-- JavaScript no final do body -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            var menu = document.getElementById('menu');
+            
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+                menu.classList.remove('menu-aberto'); // Remove classe quando fecha
+            } else {
+                menu.style.display = 'block';
+                menu.classList.add('menu-aberto'); // Adiciona classe quando abre
+            }
+        });
+    </script>
+</body>
+
+</html>
+        <p>&copy; 2025 Desenvolvido por Samuel Ferreira</p>
+
+    <script src="../js/scripts.js"></script>
+</body>
+</html>

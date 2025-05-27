@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Professores</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fundo-pagina"></body>
+
+    <header>
+        <h1>Painel de Professores</h1>
+        <nav>
+            <ul>
+                <li><a href="alunos.html">Alunos</a></li>
+                <li><a href="secretaria.html">Secretaria</a></li>
+                <li><a href="boletins.html">Boletins</a></li>
+                <li><a href="administrativo.html">Painel Administrativo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Lista de Professores</h2>
+            <ul id="listaProfessores"></ul>
+        </section>
+
+        <section>
+            <h2>Cadastrar Novo Professor</h2>
+            <form id="formProfessor">
+                <label for="nome">Nome do Professor:</label>
+                <input type="text" id="nome" required>
+
+                <label for="disciplina">Disciplina:</label>
+                <select id="disciplina">
+                    <option value="Matemática">Matemática</option>
+                    <option value="Português">Português</option>
+                    <option value="História">História</option>
+                    <option value="Ciências">Ciências</option>
+                    <option value="Geografia">Geografia</option>
+                    <option value="Educação Física">Educação Física</option>
+                    <option value="Artes">Artes</option>
+                    <option value="Inglês">Inglês</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Física">Física</option>
+                    <option value="Química">Química</option>
+                    <option value="Biologia">Biologia</option>
+                    <option value="Filosofia">Filosofia</option>
+                    <option value="Sociologia">Sociologia</option>
+                    <option value="Educação Religiosa">Educação Religiosa</option>
+                    <option value="Língua Estrangeira">Língua Estrangeira</option>
+                    
+                </select>
+
+               <h2><button type="submit">Cadastrar</button></h2>
+                <h2><button type="button" id="listarProfessores">Listar Professores</button></h2>
+                <h2><button type="button" id="buscarProfessor">Buscar Professor</button></h2>
+                <h2><button type="button" id="removerProfessor">Remover Professor</button></h2>
+            </form>
+        </section>
+    </main>
+<button id="voltar">Voltar</button>
+    <script src="../js/professores.js"></script>
+</body>
+</html>

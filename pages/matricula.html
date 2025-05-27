@@ -1,0 +1,36 @@
+<h2>Sistema de Matrícula</h2>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fundo-pagina">
+<form id="matriculaForm">
+    <label for="nome">Nome do Aluno:</label>
+
+    <input type="text" id="nome" required>
+
+    <label for="turma">Turma:</label>
+    <select id="turma">
+        <option value="1A">1º Ano Fundamental A</option>
+        <option value="2B">2º Ano Fundamental B</option>
+        <option value="3C">3º Ano Fundamental C</option>
+        <option value="4D">4º Ano Fundamental D</option>
+        <option value="5E">5º Ano Fundamental E</option>
+        <option value="6F">6º Ano Fundamental F</option>
+        <option value="7G">7º Ano Fundamental G</option>
+        <option value="8H">8º Ano Fundamental H</option>
+        <option value="9I">9º Ano Fundamental I</option>
+
+        <option value="1J">1º Ano Ensino médio J</option>
+        <option value="2K">2º Ano Ensino médio K</option>
+        <option value="3L">3º Ano Ensino médio L</option>
+        
+    </select>
+
+   <h2><button type="submit">Cadastrar</button></h2> 
+    <h2><button type="button" id="listarMatriculados">Listar Matriculados</button></h2>
+    <h2><button type="button" id="buscarMatriculado">Buscar Matriculado</button></h2>
+    <h2><button type="button" id="removerMatriculado">Remover Matriculado</button></h2>
+</form>
+<ul id="listaMatriculados"></ul>
+<button id="voltar">Voltar</button>
+<script src="../js/matricula.js"></script>
+ 
