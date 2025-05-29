@@ -38,4 +38,7 @@ document.getElementById('menu-toggle').addEventListener('click', function () {
         menu.classList.add('menu-aberto'); // Adiciona classe quando abre
     }
 });
+function irParaInicio() {
+    window.location.href = "index.html"; // Troque "index.html" pelo endereço da sua página inicial
+}
 
