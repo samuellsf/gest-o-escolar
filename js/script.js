@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     links.forEach(link => {
         link.addEventListener("mouseover", () => {
-            link.style.color = "#FFD700"; // Muda cor ao passar mouse
+            link.style.color = "#FFD700";
         });
 
         link.addEventListener("mouseout", () => {
-            link.style.color = "white"; // Volta ao normal
+            link.style.color = "white"; 
         });
 
         
@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (botaoVoltar) {
         botaoVoltar.addEventListener("click", function() {
             if (window.history.length > 1) {
-                window.history.back(); // Volta para a página anterior
+                window.history.back(); 
             } else {
-                window.location.href = "../index.html"; // Caso não tenha histórico, retorna à página inicial
+                window.location.href = "../index.html"; 
             }
         });
     }
@@ -32,13 +32,13 @@ document.getElementById('menu-toggle').addEventListener('click', function () {
     
     if (menu.style.display === 'block') {
         menu.style.display = 'none';
-        menu.classList.remove('menu-aberto'); // Remove classe quando fecha
+        menu.classList.remove('menu-aberto'); 
     } else {
         menu.style.display = 'block';
-        menu.classList.add('menu-aberto'); // Adiciona classe quando abre
+        menu.classList.add('menu-aberto');
     }
 });
 function irParaInicio() {
-    window.location.href = "index.html"; // Troque "index.html" pelo endereço da sua página inicial
+    window.location.href = "index.html"; 
 }
 

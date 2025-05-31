@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão Escolar</title>
     <link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body class="fundo-pagina">
     <header>
@@ -28,31 +29,38 @@
     </header>
 
     <main>
+        <button onclick="voltarParaLobby()" class="botao-lobby-redondo">
+            <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby">
+        </button>
+
+        <main>
         <section>
             <h2>Bem-vindo à página Gestão Escolar</h2>
-            <p>Esta página faz parte do Sistema de Gestão Escolar.</p>
+           
         </section>
     </main>
 
-         <!-- JavaScript no final do body -->
+    <footer>
+        <p>&copy; 2025 Desenvolvido por Samuel Ferreira</p>
+        <p>&copy; 2025 Gestão Escolar</p>
+    </footer>
+
     <script>
+        function voltarParaLobby() {
+            window.location.href = "index.html";
+        }
+
         document.getElementById('menu-toggle').addEventListener('click', function () {
             var menu = document.getElementById('menu');
-            
             if (menu.style.display === 'block') {
                 menu.style.display = 'none';
-                menu.classList.remove('menu-aberto'); // Remove classe quando fecha
+                menu.classList.remove('menu-aberto');
             } else {
                 menu.style.display = 'block';
-                menu.classList.add('menu-aberto'); // Adiciona classe quando abre
+                menu.classList.add('menu-aberto');
             }
         });
     </script>
-</body>
-
-</html>
-        <p>&copy; 2025 Desenvolvido por Samuel Ferreira</p>
-
     <script src="../js/scripts.js"></script>
 </body>
 </html>

@@ -1,10 +1,50 @@
+
+
+footer {
+    text-align: center;
+    
+    
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    padding: 5px;
+    margin-top: 150px;
+
+}
+
+
+
+/* --- FUNDO COM SOBREPOSIÇÃO --- */
 .fundo-pagina {
-    background-image: url('../assets/img/Fundo_Gestão Escolar.jpg');
-    background-size: 1490px 850px; 
-    background-position: center center; 
+    position: relative;
+    min-height: 100vh;
+    background-image: url('../assets/img/Fundo_Gestão%20Escolar.jpg');
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
-    background-color: #ffffff; 
+    background-attachment: fixed;
+    background-color: #ffffff;
+    z-index: 0;
+}
+.fundo-pagina::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 115%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    pointer-events: none;
+}
+body.fundo-pagina > * {
+    position: relative;
+    z-index: 2;
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -19,12 +59,12 @@ button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 100px;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #4f9bf3;
 }
 
 
@@ -88,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px; 
     line-height: 1.2; 
     padding: -5px; 
-    margin: -2px 0 2px 0; 
+    margin: -2px 0 2px 0; /
 }
 
 #voltar {
@@ -100,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(255, 255, 255);
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 100px;
     transition: background-color 0.3s;
     font-weight: bold;
 }
@@ -134,7 +174,7 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 100px;
     transition: background-color 0.3s;
     font-size: 18px;
 }
@@ -143,16 +183,34 @@ nav ul li a:hover {
     background-color: #0056b3;
 }
 
+.botao-lobby-redondo {
+    background-color: #d8e6f6;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.botao-lobby-redondo img.icone-lobby {
+    width: 30px;
+    height: 30px;
+}
+
+
 #menu-toggle {
+    display: block;
+    margin: 0 auto;         
+    font-size: 30px;         
     background: none;
     border: none;
-    font-size: 24px;
     cursor: pointer;
-    display: none; 
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: white;
+    color: white;             
+    padding: 10px 20px;
 }
 
 #menu {
@@ -162,13 +220,28 @@ nav ul li a:hover {
     font-family: 'Helvetica', sans-serif;
 }
 
+
+/* deixei pra ex; Sombra mais escura em telas pequenas */
+@media (max-width: 768px) {
+    .fundo-pagina::before {
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+
+/* dexei pra ex; Sombra ainda mais escura em celulares pequenos */
+@media (max-width: 480px) {
+    .fundo-pagina::before {
+        background: rgba(0, 0, 0, 0.85);
+    }
+
+
 @media screen and (max-width: 725px) {
     #menu {
         display: none; 
         flex-direction: column;
         position: absolute;
         top: 60px;
-        left: 1;
+        left: 0;
         right: 0;
         z-index: 1000; 
         background-color: #0c00f8;
@@ -200,7 +273,7 @@ nav ul li a:hover {
         width: 100px;
         height: 40px;
         background-color: #3e0df0;
-        border-radius: 10% 0 25% 0;
+        border-radius: 15% 0 25% 0;
     }
 
     #menu ul li a:hover {
@@ -223,7 +296,7 @@ nav ul li a:hover {
         background-color: #2c08e0;
     }
 
-    /* Estilizando o fundo do menu */
+    /* pra ex;Estilizando o fundo do menu */
     .menu-aberto ul {
         background-image: url('../assets/img/Fund_Gestão_Escolar.jpg');
         background-size: contain;
@@ -251,5 +324,6 @@ nav ul li a:hover {
     .menu-aberto {
         display: block;
     }
-}
+   }
+  }
 }
