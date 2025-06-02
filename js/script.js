@@ -38,7 +38,16 @@ document.getElementById('menu-toggle').addEventListener('click', function () {
         menu.classList.add('menu-aberto');
     }
 });
-function irParaInicio() {
-    window.location.href = "index.html"; 
-}
+
+
+<script>
+    function voltarParaLobby() {
+        window.location.href == window.location.origin + "index.html"
+    }
+</script>
+
+document.getElementById("enviarPergunta").addEventListener("click", responderPergunta);
+
+window.location.href = "pages/index.html";
+const mensagem = document.getElementById('mensagens').value;
 

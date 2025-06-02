@@ -1,5 +1,11 @@
-<h2>Preencher Formulário</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../css/style.css">
+<h2 style="padding-top: 50px;">Preencher Formulário</h2>
 </head>
 <body class="fundo-pagina">
 
@@ -7,18 +13,32 @@
     <label for="email">Email:</label>
     <input type="email" id="email" required>
 
-    <label for="mensagem">Mensagem:</label>
-    <h2><textarea id="mensagem" required></textarea></h2>
-
-     <h2><button type="submit">Enviar</button></h2>
-    <h2><button type="button" id="listarMensagens">Listar Mensagens</button></h2>
-    <h2><button type="button" id="buscarMensagem">Buscar Mensagem</button></h2>
-    <h2><button type="button" id="removerMensagem">Remover Mensagem</button></h2>
-
+    <label for="mensagens">Mensagens:</label>
+    <div>
+        <textarea id="mensagens" rows="4" readonly></textarea>
+    <div class="botoes-mensagens">
+        <button type="submit">Enviar</button>
+        <button type="button" id="adicionarMensagem">Adicionar Mensagem</button>
+        <button type="button" id="listarMensagens">Listar Mensagens</button>
+        <button type="button" id="buscarMensagem">Buscar Mensagem</button>
+        <button type="button" id="removerMensagem">Remover Mensagem</button>
+    </div>
 </form>
-<body>
+
+
+    <div>
 <button id="voltar">Voltar</button>
-@<footer>
+<script>
+    function voltarParaLobby() {
+        window.location.href = "index.html"; 
+    }
+</script>
+<button class="botao-lobby-redondo" onclick="voltarParaLobby()" title="Voltar ao Início">
+    <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby">
+</button>
+</div>
+
+
     <p>&copy; 2025 Gestão Escolar</p>
 </body>
 <script src="../js/formulario.js"></script>
@@ -29,15 +49,18 @@
 </script>
 <script>
     document.getElementById('formulario').addEventListener('submit', function(event) {
-        event.preventDefault(); // Impede o envio do formulário
+        event.preventDefault(); 
         const email = document.getElementById('email').value;
         const mensagem = document.getElementById('mensagem').value;
         alert(`Formulário enviado!\nEmail: ${email}\nMensagem: ${mensagem}`);
 
-        // Aqui você pode adicionar a lógica para enviar os dados do formulário para um servidor ou processá-los conforme necessário
-        document.getElementById('formulario').reset(); // Limpa o formulário após o envio
+       
+        document.getElementById('formulario').reset();
     });
 </script>
+    
+</body>
+</html>
 
 
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão Escolar</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/aluno.css">
 
 </head>
 <body class="fundo-pagina">
@@ -29,10 +30,9 @@
     </header>
 
     <main>
-        <button onclick="voltarParaLobby()" class="botao-lobby-redondo">
+        <button onclick="voltarParaLobby()" class="botao-lobby-redondo" title="Início">
             <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby">
         </button>
-
         <main>
         <section>
             <h2>Bem-vindo à página Gestão Escolar</h2>
@@ -45,6 +45,7 @@
         <p>&copy; 2025 Gestão Escolar</p>
     </footer>
 
+ 
     <script>
         function voltarParaLobby() {
             window.location.href = "index.html";
@@ -63,4 +64,11 @@
     </script>
     <script src="../js/scripts.js"></script>
 </body>
+    
+    <script>
+        function voltarParaLobby() {
+            window.location.href = "index.html";
+        }
+        
+    </script>
 </html>

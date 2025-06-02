@@ -1,81 +1,78 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const perguntaInput = document.getElementById("pergunta");
-    const botaoEnviar = document.getElementById("enviarPergunta");
-    const respostaChatbot = document.getElementById("respostaChatbot");
+window.onload = () => {
+  const input = document.getElementById("pergunta");
+  const btnEnviar = document.getElementById("enviarPergunta");
+  const btnFalar = document.getElementById("falar");
 
-    // Banco de respostas baseado em palavras-chave
+  btnEnviar.addEventListener("click", responderPergunta);
+  input.addEventListener("keypress", e => {
+    if (e.key === "Enter") responderPergunta();
+  });
 
-    function obterResposta(pergunta) {
-        pergunta = pergunta.toLowerCase();
-        for (let palavra in {
-            "matemática": "A matemática é incrível! Precisa de ajuda com equações ou conceitos?",
-            "história": "A história nos ensina sobre o passado. Algum período específico te interessa?",
-            "cálculo": "O cálculo envolve derivadas e integrais. Quer um exemplo de aplicação?",
-            "ciências": "A ciência explica o mundo ao nosso redor! Alguma área específica, como biologia ou física?",
-            "programação": "A programação é essencial hoje em dia! Quer dicas sobre JavaScript?",
-            "geografia": "A geografia estuda o planeta Terra. Alguma dúvida sobre países ou climas?",
-            "física": "A física estuda as leis do universo. Alguma dúvida sobre movimento ou energia?",
-            "default": "Não entendi sua pergunta. Tente reformular ou perguntar sobre temas como matemática, história, ciências ou programação!"
-        }) {
-            if (pergunta.includes(palavra)) {
-                return {
-                    "matemática": "A matemática é incrível! Precisa de ajuda com equações ou conceitos?",
-                    "história": "A história nos ensina sobre o passado. Algum período específico te interessa?",
-                    "cálculo": "O cálculo envolve derivadas e integrais. Quer um exemplo de aplicação?",
-                    "ciências": "A ciência explica o mundo ao nosso redor! Alguma área específica, como biologia ou física?",
-                    "programação": "A programação é essencial hoje em dia! Quer dicas sobre JavaScript?",
-                    "geografia": "A geografia estuda o planeta Terra. Alguma dúvida sobre países ou climas?",
-                    "física": "A física estuda as leis do universo. Alguma dúvida sobre movimento ou energia?",
-                    "default": "Não entendi sua pergunta. Tente reformular ou perguntar sobre temas como matemática, história, ciências ou programação!"
-                }[palavra];
-            }
-        }
-        return {
-            "matemática": "A matemática é incrível! Precisa de ajuda com equações ou conceitos?",
-            "história": "A história nos ensina sobre o passado. Algum período específico te interessa?",
-            "cálculo": "O cálculo envolve derivadas e integrais. Quer um exemplo de aplicação?",
-            "ciências": "A ciência explica o mundo ao nosso redor! Alguma área específica, como biologia ou física?",
-            "programação": "A programação é essencial hoje em dia! Quer dicas sobre JavaScript?",
-            "geografia": "A geografia estuda o planeta Terra. Alguma dúvida sobre países ou climas?",
-            "física": "A física estuda as leis do universo. Alguma dúvida sobre movimento ou energia?",
-            "default": "Não entendi sua pergunta. Tente reformular ou perguntar sobre temas como matemática, história, ciências ou programação!"
-        }["default"];
-    }
+  btnFalar.addEventListener("click", ativarReconhecimentoVoz);
 
-    botaoEnviar.addEventListener("click", function () {
-        const perguntaTexto = perguntaInput.value.trim();
-        
-        if (perguntaTexto !== "") {
-            respostaChatbot.innerHTML += `<p><strong>Você:</strong> ${perguntaTexto}</p>`;
-            respostaChatbot.innerHTML += `<p><strong>Chatbot:</strong> ${obterResposta(perguntaTexto)}</p>`;
-            perguntaInput.value = ""; // Limpa o campo de entrada
-        }
-    });
+  carregarHistorico();
+};
 
-    // Botão para voltar à página anterior
-    const botaoVoltar = document.getElementById("voltar");
-    if (botaoVoltar) {
-        botaoVoltar.addEventListener("click", function () {
-            if (document.referrer) {
-                window.history.back();
-            } else {
-                window.location.href = "../index.html";
-            }
-        });
-    }
-});
+function adicionarMensagem(texto, tipo) {
+  const chat = document.getElementById("chat");
+  const msg = document.createElement("div");
+  msg.className = `mensagem ${tipo}`;
+  msg.textContent = texto;
+  chat.appendChild(msg);
+  chat.scrollTop = chat.scrollHeight;
 
+  salvarHistorico(texto, tipo);
+}
 
-document.addEventListener("DOMContentLoaded", function() {
-    const botaoVoltar = document.getElementById("voltar");
+function responderPergunta() {
+  const pergunta = document.getElementById("pergunta").value.trim();
+  if (pergunta === "") return;
 
-    if (botaoVoltar) {
-        botaoVoltar.addEventListener("click", function() {
-            if (window.history.length > 1) {
-                window.history.back(); // Volta para a página anterior
-            } else {
-                window.location.href = "../index.html"; // Caso não tenha histórico, retorna à página inicial
-            }
-        });
-    }
-});
+  adicionarMensagem(pergunta, "usuario");
+
+  const p = pergunta.toLowerCase();
+  let resposta = respostasEducacionais(p);
+
+  adicionarMensagem(resposta, "chatbot");
+  document.getElementById("pergunta").value = "";
+}
+
+function respostasEducacionais(p) {
+  if (p.includes("horário")) return "As aulas começam às 7h30 e vão até 17h.";
+  if (p.includes("matrícula")) return "As matrículas estão abertas de 01 a 10 de fevereiro.";
+  if (p.includes("boletim") || p.includes("nota")) return "Você pode acessar seu boletim na seção 'Controle Acadêmico'.";
+  if (p.includes("professor")) return "Veja os professores na aba 'Professores Acadêmico'.";
+  if (p.includes("feriado")) return "Consulte o calendário escolar na aba 'Agenda e Calendário'.";
+  if (p.includes("evento")) return "Veja os eventos em 'Eventos Acadêmicos'.";
+  if (p.includes("biblioteca")) return "A biblioteca abre das 8h às 16h.";
+  if (p.includes("uniforme")) return "O uso de uniforme é obrigatório.";
+  if (p.includes("merenda")) return "A merenda é servida nos intervalos.";
+  return "Desculpe, ainda não sei responder isso. Tente perguntar de outra forma.";
+}
+
+function salvarHistorico(texto, tipo) {
+  const historico = JSON.parse(localStorage.getItem("chatHistorico") || "[]");
+  historico.push({ texto, tipo });
+  localStorage.setItem("chatHistorico", JSON.stringify(historico));
+}
+
+function carregarHistorico() {
+  const historico = JSON.parse(localStorage.getItem("chatHistorico") || "[]");
+  historico.forEach(msg => adicionarMensagem(msg.texto, msg.tipo));
+}
+
+function ativarReconhecimentoVoz() {
+  const reconhecimento = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  reconhecimento.lang = "pt-BR";
+  reconhecimento.start();
+
+  reconhecimento.onresult = event => {
+    const resultado = event.results[0][0].transcript;
+    document.getElementById("pergunta").value = resultado;
+    responderPergunta();
+  };
+
+  reconhecimento.onerror = () => {
+    alert("Não foi possível ativar o reconhecimento de voz.");
+  };
+}

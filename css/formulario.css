@@ -1,0 +1,102 @@
+/* Estilo base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.fundo-pagina {
+    background-color: #e0f7fa;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Formulário */
+form {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+/* Botões em linha */
+.botoes-mensagens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.botoes-mensagens button {
+    flex: 1;
+    min-width: 160px;
+    padding: 10px;
+    border: none;
+    background-color: #2196f3;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botoes-mensagens button:hover {
+    background-color: #1976d2;
+}
+
+/* Botões de navegação */
+#voltar,
+.botao-lobby-redondo {
+    margin: 15px 5px 0 0;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.icone-lobby {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .botoes-mensagens {
+        flex-direction: column;
+    }
+
+    .botoes-mensagens button {
+        width: 100%;
+    }
+}

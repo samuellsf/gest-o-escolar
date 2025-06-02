@@ -1,97 +1,121 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="../css/style.css">
+    <title>Cadastro de Alunos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/calendario.css">
+    <link rel="stylesheet" href="../css/aluno.css"> 
 </head>
 <body class="fundo-pagina">
+
+    <h2 style="padding-top: 50px;">Lista de Alunos</h2>
+    <ul id="listaAlunos"></ul>
+
+    <form id="formAluno" class="container">
+        <label for="nome">Nome do Aluno:</label>
+        <input type="text" id="nome" required>
+
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" required>
+
+        <label for="serie">Série:</label>
+        <input type="text" id="serie" required>
+
+        <label for="ano">Ano:</label>
+        <input type="number" id="ano" required min="2000" max="2100">
+
+        <h3>Disciplinas</h3>
+        <label for="disciplinas">Selecione as Disciplinas:</label>
+        <select id="disciplinas" multiple required>
+            <option value="Matemática">Matemática</option>
+            <option value="Português">Português</option>
+            <option value="Ciências">Ciências</option>
+            <option value="História">História</option>
+            <option value="Geografia">Geografia</option>
+            <option value="Educação Física">Educação Física</option>
+            <option value="Artes">Artes</option>
+            <option value="Inglês">Inglês</option>
+            <option value="Espanhol">Espanhol</option>
+            <option value="Física">Física</option>
+            <option value="Química">Química</option>
+            <option value="Biologia">Biologia</option>
+            <option value="Informática">Informática</option>
+            <option value="Literatura">Literatura</option>
+            <option value="Filosofia">Filosofia</option>
+            <option value="Sociologia">Sociologia</option>
+            <option value="Educação Financeira">Educação Financeira</option>
+            <option value="Ensino Religioso">Ensino Religioso</option>
+            <option value="Educação Ambiental">Educação Ambiental</option>
+            <option value="Empreendedorismo">Empreendedorismo</option>
+            <option value="Programação">Programação</option>
+            <option value="Robótica">Robótica</option>
+            <option value="Astronomia">Astronomia</option>
+            <option value="Educação Artística">Educação Artística</option>
+            <option value="Educação Cívica">Educação Cívica</option>
+            <option value="Educação para o Trânsito">Educação para o Trânsito</option>
+            <option value="Educação para a Saúde">Educação para a Saúde</option>
+            <option value="Língua Estrangeira">Língua Estrangeira</option>
+        </select>
+
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" required>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" required>
+
+        <label for="responsavel">Nome do Responsável:</label>
+        <input type="text" id="responsavel" required>
+
+        <label for="telefoneResponsavel">Telefone do Responsável:</label>
+        <input type="tel" id="telefoneResponsavel" required>
+
+        <label for="turma">Turma:</label>
+        <select id="turma">
+            <option value="1A">1º Ano Fundamental A</option>
+            <option value="2B">2º Ano Fundamental B</option>
+            <option value="3C">3º Ano Fundamental C</option>
+            <option value="4D">4º Ano Fundamental D</option>
+            <option value="5E">5º Ano Fundamental E</option>
+            <option value="6F">6º Ano Fundamental F</option>
+            <option value="7G">7º Ano Fundamental G</option>
+            <option value="8H">8º Ano Fundamental H</option>
+            <option value="9I">9º Ano Fundamental I</option>
+            <option value="1J">1º Ano Ensino Médio J</option>
+            <option value="2K">2º Ano Ensino Médio K</option>
+            <option value="3L">3º Ano Ensino Médio L</option>
+        </select>
+
+        <div>
+            <button class="botao-lobby-redondo" onclick="voltarParaLobby()" title="Voltar ao Início">
+                <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby">
+            </button>
+        </div>
+
+        <div class="botoes-acoes">
+            <button type="submit">Cadastrar</button>
+            <button id="buscarAlunos" type="button">Buscar Alunos</button>
+        </div>
+    </form>
+
+    <footer>
+        <button id="voltar">Voltar</button>
+        <p>&copy; 2025 Gestão Escolar</p>
+    </footer>
+
+    <script>
+        function voltarParaLobby() {
+            window.location.href = "index.html";
+        }
+    </script>
+    <script src="../js/alunos.js"></script>
 </body>
-
-<h2 class="titulo-centralizado">Lista de Alunos</h2>
-
-<ul id="listaAlunos"></ul>
-
-<form id="formAluno">
-    <label for="nome">Nome do Aluno:</label>
-    <input type="text" id="nome" required>
-    <label for="matricula">Matrícula:</label>
-    <input type="text" id="matricula" required>
-    <label for="serie">Série:</label>
-    <input type="text" id="serie" required>
-    <label for="ano">Ano:</label>
-    <input type="number" id="ano" required min="2000" max="2100">
-    
-    <h3>Disciplinas</h3>
-    <label for="disciplinas">Selecione as Disciplinas:</label>
-    <select id="disciplinas" multiple required>
-        <option value="Matemática">Matemática</option>
-        <option value="Português">Português</option>
-        <option value="Ciências">Ciências</option>
-        <option value="História">História</option>
-        <option value="Geografia">Geografia</option>
-        <option value="Educação Física">Educação Física</option>
-        <option value="Artes">Artes</option>
-        <option value="Inglês">Inglês</option>
-        <option value="Espanhol">Espanhol</option>
-        <option value="Física">Física</option>
-        <option value="Química">Química</option>
-        <option value="Biologia">Biologia</option>
-        <option value="Informática">Informática</option>
-        <option value="Literatura">Literatura</option>
-        <option value="Filosofia">Filosofia</option>
-        <option value="Sociologia">Sociologia</option>
-        <option value="Educação Financeira">Educação Financeira</option>
-        <option value="Ensino Religioso">Ensino Religioso</option>
-        <option value="Educação Ambiental">Educação Ambiental</option>
-        <option value="Empreendedorismo">Empreendedorismo</option>
-        <option value="Programação">Programação</option>
-        <option value="Robótica">Robótica</option>
-        <option value="Astronomia">Astronomia</option>
-        <option value="Educação Artística">Educação Artística</option>
-        <option value="Educação Cívica">Educação Cívica</option>
-        <option value="Educação para o Trânsito">Educação para o Trânsito</option>
-        <option value="Educação para a Saúde">Educação para a Saúde</option>
-        <option value="Língua Estrangeira">Língua Estrangeira</option>
-        
-    </select>
-<ul id="listaAlunos"></ul>
-    <label for="dataNascimento">Data de Nascimento:</label>
-    <input type="date" id="dataNascimento" required>   
-    <label for="email">E-mail:</label>  
-    <input type="email" id="email" required>    
-    <label for="telefone">Telefone:</label> 
-    <input type="tel" id="telefone" required>   
-    <label for="endereco">Endereço:</label> 
-    <input type="text" id="endereco" required>  
-    <label for="responsavel">Nome do Responsável:</label>   
-    <input type="text" id="responsavel" required>   
-    <label for="telefoneResponsavel">Telefone do Responsável:</label>   
-    <input type="tel" id="telefoneResponsavel" required>    
-
-    <label for="turma">Turma:</label>
-    <select id="turma">
-         <option value="1A">1º Ano Fundamental A</option>
-        <option value="2B">2º Ano Fundamental B</option>
-        <option value="3C">3º Ano Fundamental C</option>
-        <option value="4D">4º Ano Fundamental D</option>
-        <option value="5E">5º Ano Fundamental E</option>
-        <option value="6F">6º Ano Fundamental F</option>
-        <option value="7G">7º Ano Fundamental G</option>
-        <option value="8H">8º Ano Fundamental H</option>
-        <option value="9I">9º Ano Fundamental I</option>
-
-        <option value="1J">1º Ano Ensino médio J</option>
-        <option value="2K">2º Ano Ensino médio K</option>
-        <option value="3L">3º Ano Ensino médio L</option>
-        
-    </select>
-    <button type="submit">Cadastrar</button>
-</form>
-<button id="buscarAlunos">Buscar Alunos</button>
-<button id="voltar">Voltar</button>
-<p>&copy; 2025 Gestão Escolar</p>
-</footer>
-
-<script src="../js/alunos.js"></script>
+</html>

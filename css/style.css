@@ -1,329 +1,218 @@
-
-
-footer {
-    text-align: center;
-    
-    
-    color: #ffffff;
-    font-family: 'Playfair Display', serif;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    padding: 5px;
-    margin-top: 150px;
-
+/* === RESET BÁSICO === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-
-/* --- FUNDO COM SOBREPOSIÇÃO --- */
-.fundo-pagina {
+/* === BODY COM FUNDO ESCURO E SOBREPOSIÇÃO === */
+body.fundo-pagina {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('../assets/img/Fundo_Gestão%20Escolar.jpg') no-repeat center center fixed;
+    background-size: cover;
     position: relative;
     min-height: 100vh;
-    background-image: url('../assets/img/Fundo_Gestão%20Escolar.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #ffffff;
-    z-index: 0;
-}
-.fundo-pagina::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 115%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-    pointer-events: none;
-}
-body.fundo-pagina > * {
-    position: relative;
-    z-index: 2;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 100px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #4f9bf3;
-}
-
-
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #ffffff; 
-}
-
-.titulo-centralizado {
-    text-align: center;
-}
-
-.container-form {
-    max-width: 600px;
-    margin: auto;
-}
-
-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-input, select, button {
-    width: 30%;
-}
-
-#listaAlunos {
-    padding: 0;
-    list-style: none;
-    text-align: center;
-}
-
-button {
-    font-size: 12px; 
-    padding: 8px 9px;
-    width: auto; 
-    min-width: 100px; 
-}
-
-#buscarAlunos, #voltar, #formAluno button {
-    max-width: 150px; 
-    display: block;
-    margin: 10px auto; 
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Helvetica',;
-    color: #f6efef; 
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    margin: 20px 0; 
-    text-align: center; 
-    margin: 10px 0; 
-    font-weight: bold; 
-    font-size: 24px; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-    line-height: 1.2; 
-    padding: -5px; 
-    margin: -2px 0 2px 0; /
-}
-
-#voltar {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
-    color: rgb(255, 255, 255);
-    border: none;
-    cursor: pointer;
-    border-radius: 100px;
-    transition: background-color 0.3s;
-    font-weight: bold;
-}
-
-
-#voltar:hover {
-    background-color: #0056b3;
     color: #fff;
 }
 
+body.fundo-pagina::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+body.fundo-pagina > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* === CABEÇALHO COM MENU HAMBURGUER === */
 header {
-    background-color: #007BFF;
-    color: rgb(255, 255, 255);
-    padding: 1px;
+    background-color: #1976d2;
+    color: white;
+    padding: 30px;
+    position: relative;
+}
+
+header h1 {
     text-align: center;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 2rem;
 }
 
-nav ul {
-    list-style: none;  
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 15px;
+/*estilo de letras titulo da pagina*/
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+    text-align: center;
 }
-
-nav ul li a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 100px;
-    transition: background-color 0.3s;
-    font-size: 18px;
-}
-
-nav ul li a:hover {
-    background-color: #0056b3;
-}
-
-.botao-lobby-redondo {
-    background-color: #d8e6f6;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-
-.botao-lobby-redondo img.icone-lobby {
-    width: 30px;
-    height: 30px;
-}
-
 
 #menu-toggle {
-    display: block;
-    margin: 0 auto;         
-    font-size: 30px;         
     background: none;
     border: none;
+    color: white;
+    font-size: 2rem;
     cursor: pointer;
-    color: white;             
-    padding: 10px 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
-#menu {
-    display: flex;
-    justify-content: center;
+/* === MENU DE NAVEGAÇÃO === */
+nav#menu {
+    display: none;
+    background-color: #1565c0;
+    padding: 10px 0;
+}
+
+/* Estilizando o fundo do menu aberto */
+.menu-aberto ul {
+    background-image: url('../assets/img/Fund_Gestão_Escolar.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+    .menu-aberto ul li a {
     font-size: 16px;
-    font-family: 'Helvetica', sans-serif;
-}
-
-
-/* deixei pra ex; Sombra mais escura em telas pequenas */
-@media (max-width: 768px) {
-    .fundo-pagina::before {
-        background: rgba(0, 0, 0, 0.75);
-    }
-
-
-/* dexei pra ex; Sombra ainda mais escura em celulares pequenos */
-@media (max-width: 480px) {
-    .fundo-pagina::before {
-        background: rgba(0, 0, 0, 0.85);
-    }
-
-
-@media screen and (max-width: 725px) {
-    #menu {
-        display: none; 
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        z-index: 1000; 
-        background-color: #0c00f8;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-
-    #menu-toggle {
-        display: block; 
-        
-        
-    }
-
-    #menu ul {
-        flex-direction: column;
-        padding: 0;
-        list-style: none;
-    }
-
-    #menu ul li {
-        padding: 5px 0; 
-    }
-
-    #menu ul li a {
-        font-size: 15px; 
-        display: block;
-        width: 100px;
-        height: 40px;
-        background-color: #3e0df0;
-        border-radius: 15% 0 25% 0;
-    }
-
-    #menu ul li a:hover {
-        background-color: #2c08e0;
-    }
-
-    .menu-aberto ul li a {
-        font-size: 16px; 
-        display: block;
-        width: auto; 
-        padding: 10px;
-        background-color: #3e0df0;
-        border-radius: 5px;
-        color: white;
-        transition: background-color 0.3s;
-        font-weight: bold;
-    }
-
-    .menu-aberto ul li a:hover {
-        background-color: #2c08e0;
-    }
-
-    /* pra ex;Estilizando o fundo do menu */
-    .menu-aberto ul {
-        background-image: url('../assets/img/Fund_Gestão_Escolar.jpg');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        
-    }
-
-    .menu-aberto ul li a {
-    font-size: 20px;
-    display: block;
-    width: auto; 
-    padding: 10px;
-    background-color: #3e0df0;
-    border-radius: 5px;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #1066e7;
+    border-radius: 10px;
     color: white;
     transition: background-color 0.3s;
     font-weight: bold;
+    max-width: 100px;
+    max-width: 130px;
+    text-align: left;
+
 }
 
 .menu-aberto ul li a:hover {
     background-color: #2c08e0;
 }
     .menu-aberto {
-        display: block;
+        display: inline-block;
     }
-   }
-  }
+  
+nav#menu a {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+
+nav#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    padding-left: 20px;
+}
+
+nav#menu li {
+    margin: 10px 0;
+    text-align: left;
+}
+
+nav#menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+nav#menu a:hover {
+    background-color: #0d47a1;
+}
+/* === BOTÃO LOBBY FLUTUANTE === */
+.botao-lobby-redondo {
+    background-color: rgba(179, 29, 29, 0.1); 
+    border: 2px solid rgba(255, 255, 255, 0.5); 
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10px; 
+    right: 5px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+    z-index: 1000;
+    backdrop-filter: blur(1px); 
+}
+
+.botao-lobby-redondo:hover {
+    background-color: rgba(22, 19, 19, 0.2); 
+    transform: scale(1.05);
+}
+
+.icone-lobby {
+    width: 26px;
+    height: 26px;
+    filter: drop-shadow(0 0 2px #151414); 
+}
+
+
+/* === CONTEÚDO PRINCIPAL === */
+main {
+    flex: 1;
+    padding: 60px 25px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* === RODAPÉ FIXO === */
+footer {
+    background-color: #1565c0;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    font-family: 'Playfair Display', serif;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    #menu-toggle {
+        top: 10px;
+        left: 10px;
+    }
+
+    .botao-lobby-redondo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .icone-lobby {
+        width: 24px;
+        height: 24px;
+    }
 }

@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Educacional</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot Educacional</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/chatbot.css" />
 </head>
 <body class="fundo-pagina">
 
-    <h2>Chatbot Educacional</h2>
+  <h2>Chatbot Educacional</h2>
 
-    <label for="pergunta">Digite sua pergunta:</label>
-    <input type="text" id="pergunta" placeholder="Pergunte algo..." aria-label="Campo de pergunta">
+  <div id="chat"></div>
+
+  <div class="input-area">
+    <input type="text" id="pergunta" placeholder="Digite ou fale sua pergunta..." />
     <button id="enviarPergunta">Enviar</button>
+  </div>
 
-    <p id="respostaChatbot" aria-live="polite"></p>
-    <button id="voltar">Voltar</button>
-
-    <script src="../js/chatbot.js"></script>
-
+  
+  <div>
+    <button class="botao-lobby-redondo" onclick="voltarParaLobby()" title="Voltar ao Início">
+      <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby">
+    </button>
+  </div>
+<div>
+    <button onclick="voltarParaLobby()">Voltar</button>
+    <p>&copy; 2025 Gestão Escolar</p>
+</div>
+<script>
+  function voltarParaLobby() {
+    window.location.href = "index.html"; 
+  }
+</script>
+  <script src="../js/chatbot.js"></script>
 </body>
 </html>

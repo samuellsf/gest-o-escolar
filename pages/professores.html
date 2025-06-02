@@ -52,7 +52,16 @@
                     <option value="Língua Estrangeira">Língua Estrangeira</option>
                     
                 </select>
-
+      <div>
+<script>
+    function voltarParaLobby() {
+        window.location.href = "index.html"; // 
+    }
+</script>
+<button class="botao-lobby-redondo" onclick="voltarParaLobby()" title="Voltar ao Início">
+    <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby">
+</button>
+</div>
                <h2><button type="submit">Cadastrar</button></h2>
                 <h2><button type="button" id="listarProfessores">Listar Professores</button></h2>
                 <h2><button type="button" id="buscarProfessor">Buscar Professor</button></h2>
