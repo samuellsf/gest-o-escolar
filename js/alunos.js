@@ -1,6 +1,7 @@
 const formAluno = document.getElementById('formAluno');
 const listaAlunos = document.getElementById('listaAlunos');
 const buscarAlunosBtn = document.getElementById('buscarAlunos');
+buscarAlunosBtn.addEventListener('click', listarAlunos);
 
 let editandoIndex = null;
 
@@ -127,7 +128,49 @@ formAluno.addEventListener('submit', function (event) {
 });
 
 // Botão "Buscar Alunos" carrega a lista
-buscarAlunosBtn.addEventListener('click', listarAlunos);
+buscarAlunosBtn.addEventListener('click', function () {
+    const filtro = document.getElementById('filtroAluno').value.trim().toLowerCase();
+    const alunos = carregarAlunos();
+
+    const filtrados = alunos.filter(aluno =>
+        aluno.nome.toLowerCase().includes(filtro) ||
+        aluno.matricula.toLowerCase().includes(filtro)
+    );
+
+    function listarAlunos(listaFiltrada = null) {
+    listaAlunos.innerHTML = '';
+    const alunos = listaFiltrada || carregarAlunos();
+
+    if (alunos.length === 0) {
+        listaAlunos.innerHTML = `<li style="text-align:center; padding: 20px;">Nenhum aluno encontrado.</li>`;
+        return;
+    }
+
+    alunos.forEach((aluno, index) => {
+        const item = document.createElement('li');
+        item.innerHTML = `
+            <span><strong>${aluno.nome}</strong></span>
+            <span>Matrícula: ${aluno.matricula}</span>
+            <span>Série: ${aluno.serie}</span>
+            <span>Ano: ${aluno.ano}</span>
+            <span>Turma: ${aluno.turma}</span>
+            <span>Data de Nascimento: ${aluno.dataNascimento}</span>
+            <span>Email: ${aluno.email}</span>
+            <span>Telefone: ${aluno.telefone}</span>
+            <span>Endereço: ${aluno.endereco}</span>
+            <span>Responsável: ${aluno.responsavel}</span>
+            <span>Telefone do Responsável: ${aluno.telefoneResponsavel}</span>
+            <span>Disciplinas: ${aluno.disciplinas.join(', ')}</span>
+            <div>
+                <button onclick="editarAluno(${index})">Editar</button>
+                <button onclick="removerAluno(${index})">Excluir</button>
+            </div>
+        `;
+        listaAlunos.appendChild(item);
+    });
+}
+
+});
 
 // Carrega lista automaticamente ao carregar página
 document.addEventListener('DOMContentLoaded', listarAlunos);

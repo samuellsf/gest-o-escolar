@@ -104,6 +104,34 @@ form.container input::placeholder {
   justify-content: center;
 }
 
+#filtroContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+#filtroAluno {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#buscarAlunos {
+  padding: 8px 12px;
+  background-color: #005fcc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#buscarAlunos:hover {
+  background-color: #0047a3;
+}
+
 .botoes-acoes button {
   background-color: #0e29d7;
   color: #fff;
@@ -160,8 +188,7 @@ footer button#voltar:hover {
   background-color: #2477f4;
 }
 
-
-/* Responsividade */
+/* Responsividade geral para até 768px */
 @media (max-width: 768px) {
   form.container,
   .lista-container {
@@ -176,9 +203,10 @@ footer button#voltar:hover {
   }
 
   .botoes-acoes {
-    flex-direction: center;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
   }
 
   .botoes-acoes button {
@@ -192,7 +220,7 @@ footer button#voltar:hover {
   }
 
   #listaAlunos li div {
-    flex-direction: center;
+    flex-direction: column;
     justify-content: center;
     gap: 8px;
   }
@@ -207,16 +235,62 @@ footer button#voltar:hover {
   }
 }
 
+/* Responsividade para até 480px */
 @media (max-width: 480px) {
   form.container {
     padding: 15px;
   }
 
-  #listaAlunos li {
+  form.container input,
+  form.container select {
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+
+  #filtroContainer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #filtroAluno, 
+  #buscarAlunos {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Ajustes finos para telas muito pequenas (até 338px) */
+@media (max-width: 338px) {
+  form.container {
     padding: 10px;
   }
 
-  footer {
+  #filtroAluno, 
+  #buscarAlunos {
+    font-size: 0.85rem;
+  }
+}
+/* Ajustes para telas muito pequenas (até 320px) */
+@media (max-width: 320px) {
+  form.container {
+    padding: 8px;
+  }
+
+  form.container input,
+  form.container select {
     font-size: 0.8rem;
+    padding: 5px;
+  }
+
+  #filtroContainer {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  #filtroAluno, 
+  #buscarAlunos {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 4px;
   }
 }
