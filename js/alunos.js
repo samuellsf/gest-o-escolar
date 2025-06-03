@@ -1,204 +1,137 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const formAluno = document.getElementById("formAluno");
-    const listaAlunos = document.getElementById("listaAlunos");
-    const botaoBuscar = document.getElementById("buscarAlunos");
+const formAluno = document.getElementById('formAluno');
+const listaAlunos = document.getElementById('listaAlunos');
+const buscarAlunosBtn = document.getElementById('buscarAlunos');
 
-    const STORAGE_KEY = "alunosCadastro";
+let editandoIndex = null;
 
-    let alunos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+// Obtém disciplinas selecionadas no select multiple
+function obterDisciplinasSelecionadas() {
+    const select = document.getElementById('disciplinas');
+    return Array.from(select.selectedOptions).map(option => option.value);
+}
 
-    // Variável para controlar edição
-    let alunoEditandoIndex = null;
+// Salva array de alunos no localStorage
+function salvarAlunos(alunos) {
+    localStorage.setItem('alunos', JSON.stringify(alunos));
+}
 
-    function salvarAlunos() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(alunos));
+// Carrega lista de alunos do localStorage
+function carregarAlunos() {
+    return JSON.parse(localStorage.getItem('alunos')) || [];
+}
+
+// Exibe lista de alunos no HTML com todos os campos
+function listarAlunos() {
+    listaAlunos.innerHTML = '';
+    const alunos = carregarAlunos();
+
+    if (alunos.length === 0) {
+        listaAlunos.innerHTML = `<li style="text-align:center; padding: 20px;">Nenhum aluno cadastrado ainda.</li>`;
+        return;
     }
 
-    function preencherFormulario(aluno) {
-        document.getElementById("nome").value = aluno.nome;
-        document.getElementById("matricula").value = aluno.matricula;
-        document.getElementById("serie").value = aluno.serie;
-        document.getElementById("ano").value = aluno.ano;
+    alunos.forEach((aluno, index) => {
+        const item = document.createElement('li');
+        item.innerHTML = `
+            <span><strong>${aluno.nome}</strong></span>
+            <span>Matrícula: ${aluno.matricula}</span>
+            <span>Série: ${aluno.serie}</span>
+            <span>Ano: ${aluno.ano}</span>
+            <span>Turma: ${aluno.turma}</span>
+            <span>Data de Nascimento: ${aluno.dataNascimento}</span>
+            <span>Email: ${aluno.email}</span>
+            <span>Telefone: ${aluno.telefone}</span>
+            <span>Endereço: ${aluno.endereco}</span>
+            <span>Responsável: ${aluno.responsavel}</span>
+            <span>Telefone do Responsável: ${aluno.telefoneResponsavel}</span>
+            <span>Disciplinas: ${aluno.disciplinas.join(', ')}</span>
+            <div>
+                <button onclick="editarAluno(${index})">Editar</button>
+                <button onclick="removerAluno(${index})">Excluir</button>
+            </div>
+        `;
+        listaAlunos.appendChild(item);
+    });
+}
 
-        const disciplinasSelect = document.getElementById("disciplinas");
-        // Limpa seleção anterior
-        for (let i = 0; i < disciplinasSelect.options.length; i++) {
-            disciplinasSelect.options[i].selected = aluno.disciplinas.includes(disciplinasSelect.options[i].value);
-        }
+// Preenche o formulário para editar aluno existente
+function editarAluno(index) {
+    const alunos = carregarAlunos();
+    const aluno = alunos[index];
 
-        document.getElementById("dataNascimento").value = aluno.dataNascimento;
-        document.getElementById("email").value = aluno.email;
-        document.getElementById("telefone").value = aluno.telefone;
-        document.getElementById("endereco").value = aluno.endereco;
-        document.getElementById("responsavel").value = aluno.responsavel;
-        document.getElementById("telefoneResponsavel").value = aluno.telefoneResponsavel;
-        document.getElementById("turma").value = aluno.turma;
-    }
+    document.getElementById('nome').value = aluno.nome;
+    document.getElementById('matricula').value = aluno.matricula;
+    document.getElementById('serie').value = aluno.serie;
+    document.getElementById('ano').value = aluno.ano;
+    document.getElementById('dataNascimento').value = aluno.dataNascimento;
+    document.getElementById('email').value = aluno.email;
+    document.getElementById('telefone').value = aluno.telefone;
+    document.getElementById('endereco').value = aluno.endereco;
+    document.getElementById('responsavel').value = aluno.responsavel;
+    document.getElementById('telefoneResponsavel').value = aluno.telefoneResponsavel;
+    document.getElementById('turma').value = aluno.turma;
 
-    function renderizarLista(alunosParaMostrar) {
-        listaAlunos.innerHTML = "";
-
-        if (alunosParaMostrar.length === 0) {
-            listaAlunos.innerHTML = "<li>Nenhum aluno cadastrado.</li>";
-            return;
-        }
-
-        alunosParaMostrar.forEach((aluno, index) => {
-            const li = document.createElement("li");
-
-            const disciplinasStr = aluno.disciplinas.join(", ");
-
-            li.innerHTML = `
-                <strong>Nome:</strong> ${aluno.nome} |
-                <strong>Matrícula:</strong> ${aluno.matricula} |
-                <strong>Série:</strong> ${aluno.serie} |
-                <strong>Ano:</strong> ${aluno.ano} |
-                <strong>Disciplinas:</strong> ${disciplinasStr} |
-                <strong>Data Nasc.:</strong> ${aluno.dataNascimento} |
-                <strong>Email:</strong> ${aluno.email} |
-                <strong>Telefone:</strong> ${aluno.telefone} |
-                <strong>Endereço:</strong> ${aluno.endereco} |
-                <strong>Responsável:</strong> ${aluno.responsavel} |
-                <strong>Tel. Responsável:</strong> ${aluno.telefoneResponsavel} |
-                <strong>Turma:</strong> ${aluno.turma}
-                <br>
-                <button class="editar" data-index="${index}">Editar</button>
-                <button class="excluir" data-index="${index}">Excluir</button>
-            `;
-
-            listaAlunos.appendChild(li);
-        });
-
-        // Eventos para botões editar
-        document.querySelectorAll(".editar").forEach(botao => {
-            botao.addEventListener("click", function() {
-                const index = parseInt(this.getAttribute("data-index"));
-                alunoEditandoIndex = index;
-                preencherFormulario(alunos[index]);
-                window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o formulário
-
-                const botaoSubmit = formAluno.querySelector('button[type="submit"]');
-                botaoSubmit.textContent = "Salvar";
-
-                // Adiciona botão cancelar se não existir
-                if (!document.getElementById("cancelarEdicao")) {
-                    const btnCancelar = document.createElement("button");
-                    btnCancelar.type = "button";
-                    btnCancelar.id = "cancelarEdicao";
-                    btnCancelar.textContent = "Cancelar";
-                    btnCancelar.style.marginLeft = "10px";
-
-                    btnCancelar.addEventListener("click", () => {
-                        alunoEditandoIndex = null;
-                        formAluno.reset();
-                        botaoSubmit.textContent = "Cadastrar";
-                        btnCancelar.remove();
-                    });
-
-                    botaoSubmit.insertAdjacentElement("afterend", btnCancelar);
-                }
-            });
-        });
-
-        // Eventos para botões excluir
-        document.querySelectorAll(".excluir").forEach(botao => {
-            botao.addEventListener("click", function() {
-                const index = parseInt(this.getAttribute("data-index"));
-                if (confirm(`Deseja realmente excluir o aluno ${alunos[index].nome}?`)) {
-                    alunos.splice(index, 1);
-                    salvarAlunos();
-                    renderizarLista(alunos);
-                }
-            });
-        });
-    }
-
-    formAluno.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const nome = document.getElementById("nome").value.trim();
-        const matricula = document.getElementById("matricula").value.trim();
-        const serie = document.getElementById("serie").value.trim();
-        const ano = document.getElementById("ano").value;
-        const disciplinasSelect = document.getElementById("disciplinas");
-        const dataNascimento = document.getElementById("dataNascimento").value;
-        const email = document.getElementById("email").value.trim();
-        const telefone = document.getElementById("telefone").value.trim();
-        const endereco = document.getElementById("endereco").value.trim();
-        const responsavel = document.getElementById("responsavel").value.trim();
-        const telefoneResponsavel = document.getElementById("telefoneResponsavel").value.trim();
-        const turma = document.getElementById("turma").value;
-
-        if (!nome) {
-            alert("O nome do aluno não pode estar vazio!");
-            return;
-        }
-
-        const disciplinas = Array.from(disciplinasSelect.selectedOptions).map(opt => opt.value);
-        if (disciplinas.length === 0) {
-            alert("Selecione pelo menos uma disciplina!");
-            return;
-        }
-
-        const aluno = {
-            nome,
-            matricula,
-            serie,
-            ano,
-            disciplinas,
-            dataNascimento,
-            email,
-            telefone,
-            endereco,
-            responsavel,
-            telefoneResponsavel,
-            turma
-        };
-
-        if (alunoEditandoIndex !== null) {
-            // Edita aluno existente
-            alunos[alunoEditandoIndex] = aluno;
-            alunoEditandoIndex = null;
-        } else {
-            // Novo aluno
-            alunos.push(aluno);
-        }
-
-        salvarAlunos();
-        renderizarLista(alunos);
-
-        formAluno.reset();
-
-        // Ajusta botão submit e remove cancelar se existir
-        const botaoSubmit = formAluno.querySelector('button[type="submit"]');
-        botaoSubmit.textContent = "Cadastrar";
-
-        const btnCancelar = document.getElementById("cancelarEdicao");
-        if (btnCancelar) {
-            btnCancelar.remove();
-        }
+    // Seleciona as disciplinas no select multiple
+    const select = document.getElementById('disciplinas');
+    Array.from(select.options).forEach(option => {
+        option.selected = aluno.disciplinas.includes(option.value);
     });
 
-    function buscarAlunos() {
-        let termoBusca = prompt("Digite o nome do aluno para buscar (deixe vazio para mostrar todos):");
-        if (termoBusca === null) return;
+    editandoIndex = index;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-        termoBusca = termoBusca.trim().toLowerCase();
+// Remove aluno da lista e do localStorage
+function removerAluno(index) {
+    const alunos = carregarAlunos();
+    if (confirm(`Deseja realmente excluir ${alunos[index].nome}?`)) {
+        alunos.splice(index, 1);
+        salvarAlunos(alunos);
+        listarAlunos();
+    }
+}
 
-        if (termoBusca === "") {
-            renderizarLista(alunos);
-        } else {
-            const filtrados = alunos.filter(aluno => aluno.nome.toLowerCase().includes(termoBusca));
-            if (filtrados.length === 0) {
-                alert("Nenhum aluno encontrado com esse nome.");
-            }
-            renderizarLista(filtrados);
-        }
+// Quando o formulário for enviado (cadastrar ou atualizar)
+formAluno.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const aluno = {
+        nome: document.getElementById('nome').value.trim(),
+        matricula: document.getElementById('matricula').value.trim(),
+        serie: document.getElementById('serie').value.trim(),
+        ano: document.getElementById('ano').value,
+        disciplinas: obterDisciplinasSelecionadas(),
+        dataNascimento: document.getElementById('dataNascimento').value,
+        email: document.getElementById('email').value.trim(),
+        telefone: document.getElementById('telefone').value.trim(),
+        endereco: document.getElementById('endereco').value.trim(),
+        responsavel: document.getElementById('responsavel').value.trim(),
+        telefoneResponsavel: document.getElementById('telefoneResponsavel').value.trim(),
+        turma: document.getElementById('turma').value
+    };
+
+    const alunos = carregarAlunos();
+
+    if (editandoIndex !== null) {
+        alunos[editandoIndex] = aluno;
+        alert('Aluno atualizado com sucesso!');
+        editandoIndex = null;
+    } else {
+        alunos.push(aluno);
+        alert('Aluno cadastrado com sucesso!');
     }
 
-    if (botaoBuscar) {
-        botaoBuscar.addEventListener("click", buscarAlunos);
-    }
-
-    renderizarLista(alunos);
+    salvarAlunos(alunos);
+    formAluno.reset();
+    listarAlunos();
 });
+
+// Botão "Buscar Alunos" carrega a lista
+buscarAlunosBtn.addEventListener('click', listarAlunos);
+
+// Carrega lista automaticamente ao carregar página
+document.addEventListener('DOMContentLoaded', listarAlunos);
+
+// Torna as funções editar/remover globais para uso no onclick inline
+window.editarAluno = editarAluno;
+window.removerAluno = removerAluno;

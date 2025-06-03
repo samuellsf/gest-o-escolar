@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cadastro de Alunos</title>
+
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/calendario.css" />
-    <link rel="stylesheet" href="../css/aluno.css" />
+<link rel="stylesheet" href="../css/alunos.css" />
+    
 </head>
 <body class="fundo-pagina">
+     
 
-    <h2>Lista de Alunos</h2> 
-    <ul id="listaAlunos"></ul>
+   <div class="lista-container">
+  <ul id="listaAlunos"></ul>
+</div>
+
 
     <form id="formAluno" class="container">
         <label for="nome">Nome do Aluno:</label>
@@ -71,25 +76,30 @@
             <option value="7G">7º Ano Fundamental G</option>
             <option value="8H">8º Ano Fundamental H</option>
             <option value="9I">9º Ano Fundamental I</option>
- 
-            <option value="1º">1º Ano Ensino Médio L</option>
-            <option value="2º">2º Ano Ensino Médio M</option>
-            <option value="3º">3º Ano Ensino Médio N</option>
-            <option value="1º">1º Ano Ensino Técnico O</option>
-            <option value="2º">2º Ano Ensino Técnico P</option>
-            <option value="3º">3º Ano Ensino Técnico Q</option>
-            <option value="1º">1º Ano Ensino Superior R</option>
-            <option value="2º">2º Ano Ensino Superior S</option>
-            <option value="3º">3º Ano Ensino Superior T</option>
-            <option value="1º">1º Ano Pós-Graduação U</option>
-            <option value="2º">2º Ano Pós-Graduação V</option>
-            <option value="3º">3º Ano Pós-Graduação W</option>
-            <option value="1º">1º Ano Educação Infantil X</option>
-            <option value="2º">2º Ano Educação Infantil Y</option>
-            <option value="3º">3º Ano Educação Infantil Z</option>
-            <option value="1º">1º Ano Educação Especial AA</option>
-            <option value="2º">2º Ano Educação Especial AB</option>
-            <option value="3º">3º Ano Educação Especial AC</option>
+
+            <option value="EM1">1º Ano Ensino Médio L</option>
+            <option value="EM2">2º Ano Ensino Médio M</option>
+            <option value="EM3">3º Ano Ensino Médio N</option>
+            
+            <option value="ET1">1º Ano Ensino Técnico O</option>
+            <option value="ET2">2º Ano Ensino Técnico P</option>
+            <option value="ET3">3º Ano Ensino Técnico Q</option>
+            
+            <option value="ES1">1º Ano Ensino Superior R</option>
+            <option value="ES2">2º Ano Ensino Superior S</option>
+            <option value="ES3">3º Ano Ensino Superior T</option>
+            
+            <option value="PG1">1º Ano Pós-Graduação U</option>
+            <option value="PG2">2º Ano Pós-Graduação V</option>
+            <option value="PG3">3º Ano Pós-Graduação W</option>
+
+            <option value="EI1">1º Ano Educação Infantil X</option>
+            <option value="EI2">2º Ano Educação Infantil Y</option>
+            <option value="EI3">3º Ano Educação Infantil Z</option>
+
+            <option value="EE1">1º Ano Educação Especial AA</option>
+            <option value="EE2">2º Ano Educação Especial AB</option>
+            <option value="EE3">3º Ano Educação Especial AC</option>
         </select>
 
         <div>
@@ -105,15 +115,19 @@
     </form>
 
     <footer>
-        <button id="voltar" onclick="voltarParaLobby()" type="button">Voltar</button>
-        <p>&copy; 2025 Gestão Escolar</p>
-    </footer>
+     <button id="voltar" onclick="voltarParaLobby()">Voltar</button>
 
+      <p>&copy; 2025 Gestão Escolar</p>
+  </footer>
+
+   
     <script>
         function voltarParaLobby() {
             window.location.href = "index.html";
         }
     </script>
-    <script src="../js/alunos.js"></script>
+<script src="../js/alunos.js"></script>
+
+
 </body>
 </html>
