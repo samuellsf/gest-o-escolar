@@ -1,63 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gestão Escolar</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestão Escolar</title>
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body class="fundo-pagina">
-    <header>
-        <h1>Sistema de Gestão Escolar</h1>
-        <button id="menu-toggle" aria-label="Abrir/fechar menu">&#9776;</button>
-        <nav id="menu" style="display:none;">
-            <ul>
-                <li><a href="alunos.html">Alunos Acadêmico</a></li>
-                <li><a href="professores.html">Professores Acadêmico</a></li>
-                <li><a href="formulario.html">Formulário de Alunos</a></li>
-                <li><a href="secretaria.html">Secretaria Escolar</a></li>
-                <li><a href="administrativo.html">Painel Administrativo</a></li>
-                <li><a href="calendario.html">Agenda e Calendário</a></li>
-                <li><a href="boletins.html">Controle Acadêmico</a></li>
-                <li><a href="login.html">Área de Login</a></li>
-                <li><a href="api-integracao.html">Integração com APIs</a></li>
-                <li><a href="matricula.html">Sistema de Matrícula</a></li>
-                <li><a href="chatbot.html">Chatbot Educacional</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Sistema de Gestão Escolar</h1>
+    <button id="menu-toggle" aria-label="Abrir/fechar menu">&#9776;</button>
+    <nav id="menu" class="menu-principal" style="display: none;">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="alunos.html">Alunos Acadêmico</a></li>
+        <li><a href="professores.html">Professores Acadêmico</a></li>
+        <li><a href="formulario.html">Formulário de Alunos</a></li>
+        <li><a href="secretaria.html">Secretaria Escolar</a></li>
+        <li><a href="administrativo.html">Painel Administrativo</a></li>
+        <li><a href="calendario.html">Agenda e Calendário</a></li>
+        <li><a href="boletins.html">Controle Acadêmico</a></li>
+        <li><a href="matricula.html">Sistema de Matrícula</a></li>
+        <li><a href="api-integracao.html">Integração com APIs</a></li>
+        <li><a href="chatbot.html">Chatbot Educacional</a></li>
+        <li><a href="login.html">Área de Login</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <button onclick="voltarParaLobby()" class="botao-lobby-redondo" title="Início">
-            <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby" />
-        </button>
+  <main>
+    <button onclick="voltarParaLobby()" class="botao-lobby-redondo" title="Início">
+      <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby" />
+    </button>
 
-        <section>
-            <h2>Bem-vindo à página Gestão Escolar</h2>
-        </section>
-    </main>
+    <section>
+      <h2>Bem-vindo à página Gestão Escolar</h2>
+    </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 Desenvolvido por Samuel Ferreira</p>
-        <p>&copy; 2025 Gestão Escolar</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 Desenvolvido por Samuel Ferreira</p>
+    <p>&copy; 2025 Gestão Escolar</p>
+  </footer>
 
-    <script>
-        
-        function voltarParaLobby() {
-            window.location.href = "index.html";
-        }
-
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('menu');
-            const isVisible = menu.style.display === 'block';
-
-            menu.style.display = isVisible ? 'none' : 'block';
-            menu.classList.toggle('menu-aberto', !isVisible);
-        });
-    </script>
-   
-    <script src="../js/scripts.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>

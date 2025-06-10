@@ -1,123 +1,168 @@
+// Redireciona para o lobby
 function voltarParaLobby() {
-    window.location.href = "index.html";
+  window.location.href = "index.html";
 }
 
-document.getElementById('voltar').addEventListener('click', function () {
-    window.history.back();
+// Botão Voltar
+document.getElementById("voltar").addEventListener("click", () => {
+  window.history.back();
 });
 
-// Array para guardar mensagens como objetos {nome, email, mensagem}
-let mensagensArray = [];
+// Array de professores
+let professores = [];
+carregarProfessores(); // Carrega do localStorage ao iniciar
 
-// Atualiza textarea com todas as mensagens cadastradas
-function atualizarTextarea() {
-    const textarea = document.getElementById('mensagens');
-    if (mensagensArray.length === 0) {
-        textarea.value = 'Nenhuma mensagem cadastrada.';
-        return;
-    }
+// Atualiza a lista de professores no HTML
+function atualizarLista() {
+  const lista = document.getElementById("listaProfessores");
+  lista.innerHTML = "";
 
-    textarea.value = mensagensArray.map((m, i) => 
-        `#${i+1} - Nome: ${m.nome}\nEmail: ${m.email}\nMensagem: ${m.mensagem}\n---`
-    ).join('\n');
+  if (professores.length === 0) {
+    lista.innerHTML = "<p>Nenhum professor cadastrado.</p>";
+    return;
+  }
+
+  professores.forEach((prof, index) => {
+    const bolha = document.createElement("div");
+    bolha.className = "bolha";
+
+    bolha.innerHTML = `
+      <strong>${prof.nome}</strong><br>
+      <span class="tag">${prof.disciplina}</span><br>
+      <small>Registrado em: ${prof.dataRegistro}</small>
+      <div class="botoes-bolha">
+        <button class="botao-editar" onclick="editarProfessor(${index})">Editar</button>
+        <button class="botao-excluir" onclick="excluirProfessor(${index})">Excluir</button>
+      </div>
+    `;
+
+    lista.appendChild(bolha);
+  });
 }
 
-// Evento Enviar formulário (botão Enviar)
-document.getElementById('formulario').addEventListener('submit', function (event) {
-    event.preventDefault();
+// Cadastrar novo professor
+document.getElementById("formProfessor").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mensagemTexto = document.getElementById('mensagem').value.trim();
+  const nome = document.getElementById("nome").value.trim();
+  const disciplina = document.getElementById("disciplina").value;
 
-    if (!nome || !email || !mensagemTexto) {
-        alert('Por favor, preencha todos os campos!');
-        return;
-    }
+  if (!nome || !disciplina) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
 
-    mensagensArray.push({ nome: nome, email: email, mensagem: mensagemTexto });
-    atualizarTextarea();
-
-    alert(`Formulário enviado!\nNome: ${nome}\nEmail: ${email}\nMensagem: ${mensagemTexto}`);
-
-    this.reset();
+  const dataRegistro = new Date().toLocaleString("pt-BR");
+  professores.push({ nome, disciplina, dataRegistro });
+  salvarProfessores();
+  atualizarLista();
+  this.reset();
+  alert("Professor cadastrado com sucesso!");
 });
 
-// Botão Adicionar Mensagem — adiciona via prompt
-document.getElementById('adicionarMensagem').addEventListener('click', function () {
-    const nome = prompt('Digite o nome da mensagem:');
-    if (!nome) return alert('Nome inválido!');
+// Listar professores
+document.getElementById("listarProfessores").addEventListener("click", () => {
+  if (professores.length === 0) {
+    alert("Nenhum professor cadastrado.");
+    return;
+  }
 
-    const email = prompt('Digite o email da mensagem:');
-    if (!email) return alert('Email inválido!');
+  const lista = professores.map(
+    (p, i) => `#${i + 1} - Nome: ${p.nome}\nDisciplina: ${p.disciplina}\nRegistrado em: ${p.dataRegistro}`
+  ).join("\n\n");
 
-    const mensagem = prompt('Digite o texto da mensagem:');
-    if (!mensagem) return alert('Mensagem inválida!');
-
-    mensagensArray.push({ nome, email, mensagem });
-    atualizarTextarea();
-    alert('Mensagem adicionada com sucesso!');
+  alert("Professores cadastrados:\n\n" + lista);
 });
 
-// Botão Listar Mensagens — alerta com todas as mensagens
-document.getElementById('listarMensagens').addEventListener('click', function () {
-    if (mensagensArray.length === 0) {
-        alert('Nenhuma mensagem cadastrada.');
-        return;
-    }
+// Buscar professor
+document.getElementById("buscarProfessor").addEventListener("click", () => {
+  const termo = prompt("Digite o nome ou disciplina para buscar:");
+  if (!termo) return;
 
-    const lista = mensagensArray.map((m, i) => 
-        `#${i+1} - Nome: ${m.nome}\nEmail: ${m.email}\nMensagem: ${m.mensagem}`
-    ).join('\n\n');
+  const encontrados = professores.filter(p =>
+    p.nome.toLowerCase().includes(termo.toLowerCase()) ||
+    p.disciplina.toLowerCase().includes(termo.toLowerCase())
+  );
 
-    alert('Mensagens cadastradas:\n\n' + lista);
+  if (encontrados.length === 0) {
+    alert("Nenhum professor encontrado.");
+    return;
+  }
+
+  const lista = encontrados.map(
+    (p) => `Nome: ${p.nome}\nDisciplina: ${p.disciplina}\nRegistrado em: ${p.dataRegistro}`
+  ).join("\n\n");
+
+  alert("Professores encontrados:\n\n" + lista);
 });
 
-// Botão Buscar Mensagem — busca por texto em nome, email ou mensagem
-document.getElementById('buscarMensagem').addEventListener('click', function () {
-    const termo = prompt('Digite o texto para buscar nas mensagens:');
-    if (!termo) return;
+// Remover professor
+document.getElementById("removerProfessor").addEventListener("click", () => {
+  const termo = prompt("Digite o nome do professor que deseja remover:");
+  if (!termo) return;
 
-    const resultados = mensagensArray.filter(m => 
-        m.nome.toLowerCase().includes(termo.toLowerCase()) ||
-        m.email.toLowerCase().includes(termo.toLowerCase()) ||
-        m.mensagem.toLowerCase().includes(termo.toLowerCase())
-    );
+  const antes = professores.length;
+  professores = professores.filter(p =>
+    !p.nome.toLowerCase().includes(termo.toLowerCase())
+  );
 
-    if (resultados.length === 0) {
-        alert('Nenhuma mensagem encontrada com esse termo.');
-        return;
-    }
-
-    const lista = resultados.map((m, i) => 
-        `Nome: ${m.nome}\nEmail: ${m.email}\nMensagem: ${m.mensagem}`
-    ).join('\n\n');
-
-    alert('Mensagens encontradas:\n\n' + lista);
+  if (professores.length === antes) {
+    alert("Nenhum professor removido.");
+  } else {
+    salvarProfessores();
+    atualizarLista();
+    alert("Professor(es) removido(s) com sucesso!");
+  }
 });
 
-// Botão Remover Mensagem — remove mensagens que contenham termo em nome, email ou mensagem
-document.getElementById('removerMensagem').addEventListener('click', function () {
-    const termo = prompt('Digite o texto da mensagem que deseja remover:');
-    if (!termo) return;
+// Editar professor
+function editarProfessor(index) {
+  const atual = professores[index];
+  const novoNome = prompt("Editar nome:", atual.nome);
+  if (!novoNome) return;
 
-    const novaLista = mensagensArray.filter(m => 
-        !(
-            m.nome.toLowerCase().includes(termo.toLowerCase()) ||
-            m.email.toLowerCase().includes(termo.toLowerCase()) ||
-            m.mensagem.toLowerCase().includes(termo.toLowerCase())
-        )
-    );
+  const novaDisciplina = prompt("Editar disciplina:", atual.disciplina);
+  if (!novaDisciplina) return;
 
-    if (novaLista.length === mensagensArray.length) {
-        alert('Nenhuma mensagem removida (não encontrada).');
-        return;
-    }
+  professores[index] = {
+    nome: novoNome.trim(),
+    disciplina: novaDisciplina.trim(),
+    dataRegistro: atual.dataRegistro
+  };
 
-    mensagensArray = novaLista;
-    atualizarTextarea();
-    alert('Mensagem(s) removida(s) com sucesso!');
+  salvarProfessores();
+  atualizarLista();
+  alert("Professor editado com sucesso!");
+}
+
+// Excluir professor individual
+function excluirProfessor(index) {
+  const confirmado = confirm(`Deseja excluir ${professores[index].nome}?`);
+  if (!confirmado) return;
+
+  professores.splice(index, 1);
+  salvarProfessores();
+  atualizarLista();
+  alert("Professor excluído.");
+}
+
+// LocalStorage - salvar
+function salvarProfessores() {
+  localStorage.setItem("professores", JSON.stringify(professores));
+}
+
+// LocalStorage - carregar
+function carregarProfessores() {
+  const dados = localStorage.getItem("professores");
+  if (dados) {
+    professores = JSON.parse(dados);
+  }
+}
+// Abrir/fechar menu com botão hamburguer
+document.getElementById("menuToggle").addEventListener("click", function () {
+  const menu = document.getElementById("navMenu");
+  menu.classList.toggle("ativo");
 });
 
-// Inicializa textarea vazia ao carregar a página
-atualizarTextarea();
+// Inicializar lista ao carregar
+atualizarLista();
