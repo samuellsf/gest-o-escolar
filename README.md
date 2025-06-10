@@ -1,63 +1,114 @@
-Exercício de JavaScript - Sistema de Gestão Escolar
-🏆 Objetivo
-Desenvolver páginas web dinâmicas utilizando JavaScript, considerando semântica HTML e organização de conteúdo.
+# 🏫 Sistema de Gestão Escolar
 
-📌 Contexto
-Criar um site de gestão escolar que inclua:
+Bem-vindo ao projeto **Sistema de Gestão Escolar**, desenvolvido como exercício prático de JavaScript! Este projeto orienta a construção de páginas web dinâmicas, utilizando JavaScript moderno, HTML semântico e CSS responsivo, com foco em organização, arquitetura e boas práticas de programação orientada a objetos (POO).
 
-Programação Orientada a Objetos (POO): Uso de atributos e métodos públicos e privados.
-Arquitetura de Software: Integração com 3 APIs e conexão simulada com banco de dados.
-Interatividade com JavaScript: Formulários dinâmicos e condicionais.
-Estruturação HTML e Estilização CSS.
-🚀 Atividades
-1️⃣ Planejamento e Estrutura Semântica (HTML)
-Definição de páginas como painel de alunos, professores, secretaria, etc.
-Uso de tags semânticas (, , , , , etc.).headernavmainarticlesection
-Organização lógica e intuitiva do conteúdo.
-📌 Entregável: Arquivos contendo a estrutura planejada..html
+---
 
-2️⃣ Estilização Visual (CSS)
-Criação de folhas de estilo () para melhorar a apresentação do site..css
-Implementação de layout responsivo.
-Uso de propriedades CSS para cores, tipografia e espaçamentos.
-📌 Entregável: Arquivos aplicando design visual e responsividade..css
+## 🏆 Objetivo
 
-3️⃣ Introdução ao JavaScript e Manipulação do DOM
-Alteração de elementos HTML via eventos (, ).clickhover
-Exibir/ocultar elementos dinamicamente.
-Validação de formulários no lado do cliente.
-📌 Entregável: Arquivos manipulando o DOM..js
+Desenvolver um site de gestão escolar completo, aplicando:
 
-4️⃣ POO em JavaScript
-Implementação de classes (Aluno, Professor, Turma).
-Atributos públicos e privados (, )._nome_notas
-Métodos para calcular médias, adicionar notas e exibir informações.
-📌 Entregável: Arquivos com classes bem estruturadas..js
+- **Programação Orientada a Objetos (POO)**: Uso de atributos e métodos públicos e privados.
+- **Arquitetura de Software**: Integração com 3 APIs externas e simulação de conexão com banco de dados.
+- **Interatividade com JavaScript**: Manipulação dinâmica do DOM e formulários condicionais.
+- **Estruturação HTML e Estilização CSS**: Layout semântico e responsivo.
 
-5️⃣ Formulários Dinâmicos e Interativos
-Preenchimento dinâmico com base em seleção (ex: escolha de turma carrega alunos).
-Validação em tempo real e uso de condicionais (, ).if/elseswitch
-📌 Entregável: HTML + para formulários interativos..js
+---
 
-6️⃣ Arquitetura de Software e Integração com APIs
-Definição da arquitetura (front-end, back-end, APIs, banco de dados).
-Simulação de chamadas AJAX para 3 APIs externas (geolocalização, envio de e-mail, calendário).
-Descrição das operações CRUD (Create, Read, Update, Delete).
-📌 Entregável: Documento explicativo + exemplos simulando APIs..js
+## 📌 Contexto
 
-📁 Entrega Final
-Os estudantes devem entregar:
+O projeto consiste na criação de um sistema para gestão escolar, com páginas para administração de alunos, professores, turmas e secretaria. O desenvolvimento contempla:
 
-Arquivos HTML () com estrutura semântica..html
-Arquivos CSS () para estilização..css
-Arquivos JavaScript () com interatividade e lógica de POO..js
-Documento explicando arquitetura e integração de APIs.
-Demonstração funcional do site (opcional).
-🎯 Critérios de Avaliação
-✅ Uso correto de tags HTML semânticas.
-✅ Estilização responsiva e intuitiva com CSS.
-✅ Implementação de interatividade com JavaScript.
-✅ Qualidade do código e organização.
-✅ Aplicação de POO em classes JS.
-✅ Uso eficaz de formulários dinâmicos.
-✍ Nota: Este README serve como guia para organizar e documentar o projeto. Boa programação! 🚀
+- Estruturação semântica do HTML
+- Estilização visual e responsiva via CSS
+- Lógica interativa e dinâmica com JavaScript
+- Aplicação de POO
+- Simulação de integração com APIs externas
+
+---
+
+## 🚀 Atividades e Entregáveis
+
+### 1️⃣ Planejamento e Estrutura Semântica (HTML)
+
+- Definir páginas: painel de alunos, professores, secretaria, etc.
+- Utilizar tags semânticas: `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, etc.
+- Organizar o conteúdo de forma lógica e intuitiva.
+
+**Entregável:** Arquivos `.html` com a estrutura planejada.
+
+---
+
+### 2️⃣ Estilização Visual (CSS)
+
+- Criar folhas de estilo para melhorar a apresentação e responsividade do site.
+- Usar propriedades CSS para cores, tipografia e espaçamentos.
+
+**Entregável:** Arquivos `.css` aplicando design visual e responsividade.
+
+---
+
+### 3️⃣ Introdução ao JavaScript e Manipulação do DOM
+
+- Alterar elementos HTML via eventos (`click`, `hover`).
+- Exibir/ocultar elementos dinamicamente.
+- Validar formulários no lado do cliente.
+
+**Entregável:** Arquivos `.js` manipulando o DOM.
+
+---
+
+### 4️⃣ POO em JavaScript
+
+- Implementar classes (Aluno, Professor, Turma) com atributos públicos e privados.
+- Métodos para calcular médias, adicionar notas e exibir informações.
+
+**Entregável:** Arquivos `.js` com classes bem estruturadas.
+
+---
+
+### 5️⃣ Formulários Dinâmicos e Interativos
+
+- Preenchimento dinâmico com base em seleção (ex.: escolha de turma carrega alunos).
+- Validação em tempo real e uso de condicionais (`if/else`, `switch`).
+
+**Entregável:** HTML + JS para formulários interativos.
+
+---
+
+### 6️⃣ Arquitetura de Software e Integração com APIs
+
+- Definir a arquitetura: front-end, back-end (simulado), APIs e banco de dados (simulado).
+- Simular chamadas AJAX para 3 APIs externas (exemplo: geolocalização, envio de e-mail, calendário).
+- Descrever operações CRUD (Create, Read, Update, Delete).
+
+**Entregável:** Documento explicativo + exemplos `.js` simulando APIs.
+
+---
+
+## 📁 Estrutura de Entrega
+
+- Arquivos HTML (`.html`) com estrutura semântica
+- Arquivos CSS (`.css`) para estilização
+- Arquivos JavaScript (`.js`) com interatividade e lógica de POO
+- Documento explicando arquitetura e integração de APIs
+- (Opcional) Demonstração funcional do site
+
+---
+
+## 🎯 Critérios de Avaliação
+
+- ✅ Uso correto de tags HTML semânticas
+- ✅ Estilização responsiva e intuitiva com CSS
+- ✅ Implementação de interatividade com JavaScript
+- ✅ Qualidade do código e organização dos arquivos
+- ✅ Aplicação de POO em classes JS
+- ✅ Uso eficaz de formulários dinâmicos
+
+---
+
+## ✍ Nota
+
+Este README serve como guia para organização, desenvolvimento e documentação do seu projeto. Não esqueça de comentar seu código e manter a estrutura dos arquivos clara e modular!
+
+**Boa programação! 🚀**
