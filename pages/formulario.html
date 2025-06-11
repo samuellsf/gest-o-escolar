@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/formulario.css" />
     <title>Preencher Formulário</title>
@@ -22,16 +24,17 @@
         <textarea id="mensagem" rows="4" required></textarea>
 
         <div class="botoes-mensagens">
-            <button type="submit">Enviar</button>
-            <button type="button" id="adicionarMensagem">Adicionar Mensagem</button>
-            <button type="button" id="listarMensagens">Listar Mensagens</button>
-            <button type="button" id="buscarMensagem">Buscar Mensagem</button>
-            <button type="button" id="removerMensagem">Remover Mensagem</button>
-        </div>
-    </form>
+            <button><i class="fas fa-paper-plane"></i> Enviar</button>
 
-    <label for="mensagens">Mensagens cadastradas:</label>
-    <textarea id="mensagens" rows="8" readonly></textarea>
+           <button id="adicionarMensagem">Adicionar Mensagem</button>
+  <button id="listarMensagens">Listar Mensagens</button>
+  <button id="buscarMensagem">Buscar Mensagem</button>
+  <button id="removerMensagem">Remover Mensagem</button>
+</div>
+
+<div id="listaMensagens"></div>
+
+    </form>
 
     <div>
         <button id="voltar">Voltar</button>
