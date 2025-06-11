@@ -99,3 +99,12 @@ function atualizarListaMensagens() {
     lista.appendChild(div);
   });
 }
+function voltarParaLobby() {
+    window.location.href = "../pages/index.html"; 
+}
+
+
+document.getElementById("voltar").addEventListener("click", function () {
+    window.history.back();
+});
+

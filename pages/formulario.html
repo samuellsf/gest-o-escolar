@@ -24,25 +24,25 @@
         <textarea id="mensagem" rows="4" required></textarea>
 
         <div class="botoes-mensagens">
-            <button><i class="fas fa-paper-plane"></i> Enviar</button>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+            <button type="button" id="adicionarMensagem">Adicionar Mensagem</button>
+            <button type="button" id="listarMensagens">Listar Mensagens</button>
+            <button type="button" id="buscarMensagem">Buscar Mensagem</button>
+            <button type="button" id="removerMensagem">Remover Mensagem</button>
+        </div>
 
-           <button id="adicionarMensagem">Adicionar Mensagem</button>
-  <button id="listarMensagens">Listar Mensagens</button>
-  <button id="buscarMensagem">Buscar Mensagem</button>
-  <button id="removerMensagem">Remover Mensagem</button>
-</div>
-
-<div id="listaMensagens"></div>
-
+        <div id="listaMensagens"></div>
     </form>
 
-    <div>
-        <button id="voltar">Voltar</button>
+    
+    <button type="button" id="voltar">Voltar</button>
 
-        <button class="botao-lobby-redondo" onclick="voltarParaLobby()" title="Voltar ao Início">
-            <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby" />
-        </button>
-    </div>
+ <div>
+            <button class="botao-lobby-redondo" onclick="voltarParaLobby()" title="Voltar ao Início" type="button">
+                <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby" />
+            </button>
+        </div>
+
 
     <p>&copy; 2025 Gestão Escolar</p>
 
