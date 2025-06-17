@@ -2,15 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gestão Escolar</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
+
 <body class="fundo-pagina">
   <header>
-    <h1>Sistema de Gestão Escolar</h1>
-    <button id="menu-toggle" aria-label="Abrir/fechar menu">&#9776;</button>
-    <nav id="menu" class="menu-principal" style="display: none;">
+    <div class="header-container">
+      <h1>Sistema de Gestão Escolar</h1>
+      <button id="menu-toggle" aria-label="Abrir ou fechar menu">&#9776;</button>
+    </div>
+    <nav id="menu" class="menu-principal" hidden>
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="alunos.html">Alunos Acadêmico</a></li>
@@ -30,17 +33,17 @@
 
   <main>
     <button onclick="voltarParaLobby()" class="botao-lobby-redondo" title="Início">
-      <img src="../assets/img/Lobby.webp" alt="Início" class="icone-lobby" />
+      <img src="../assets/img/Lobby.webp" alt="Ícone de Início" class="icone-lobby" />
     </button>
 
     <section>
-      <h2>Bem-vindo à página Gestão Escolar</h2>
+      <h2>Bem-vindo à Página de Gestão Escolar</h2>
+      <p>Utilize o menu para navegar entre as funcionalidades do sistema.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Desenvolvido por Samuel Ferreira</p>
-    <p>&copy; 2025 Gestão Escolar</p>
+    <p>&copy; 2025 Samuel Ferreira | Sistema de Gestão Escolar</p>
   </footer>
 
   <script src="../js/script.js"></script>
